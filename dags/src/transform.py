@@ -107,7 +107,3 @@ def transform():
 
     # Retorna o DataFrame combinado
     return combined_dataframe
-
-# Executa a transformação e imprime as primeiras 20 linhas do DataFrame resultante
-# df = transform()
-# print(df.head(20))  # Imprime as primeiras 20 linhas do DataFrame

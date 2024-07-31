@@ -110,6 +110,3 @@ def extract():
     update_sqlite_with_new_records(SAVE_DIR, SQLITE_DB)
 
     print("Todos os arquivos foram baixados e o banco de dados SQLite foi atualizado com novos registros.")
-
-# Chama a função de extração
-# extract()

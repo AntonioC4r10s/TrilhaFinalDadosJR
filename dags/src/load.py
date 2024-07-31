@@ -42,9 +42,3 @@ def load(df):
     
     # Carregar dados para o Google Sheets
     load_to_google_sheets(df, SPREADSHEET_ID, RANGE_NAME)
-
-# # Chama a função load para executar a operação de load
-# # Carregue o DataFrame do transform() aqui
-# df = transform()  # Use a função que você já criou para obter o DataFrame
-
-# load(df)  # Descomente esta linha para carregar os dados
