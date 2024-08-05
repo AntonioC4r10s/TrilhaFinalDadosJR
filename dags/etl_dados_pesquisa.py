@@ -4,7 +4,7 @@ from airflow.operators.python import PythonOperator
 
 from src.extract import extract
 from src.transform import transform
-from dags.src.load_to_gsheets import load_to_gsheets
+from src.load import load
 
 # Configurações padrão da DAG
 default_args = {
@@ -33,7 +33,7 @@ def transform_task(**context):
 
 def load_task(**context):
     df = context['task_instance'].xcom_pull(task_ids='transform', key='transformed_data')
-    load_to_gsheets(df)
+    load(df)
 
 # Tarefa de extração
 extract_operator = PythonOperator(
