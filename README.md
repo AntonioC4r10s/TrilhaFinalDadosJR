@@ -111,7 +111,8 @@ def load_task_postgresql(**context):
     load_to_postgresql(df)
 ```
 Imagem da DAG no Airflow
-(Imagem dag)
+![Imagem da DAG no Airflow](img/img1.png)
+
 
 ## Acesso ao Data Warehouse
 Você pode acessar o Data Warehouse através das seguintes opções:
