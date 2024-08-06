@@ -1,8 +1,7 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-# from transform import transform
-import credentials.gsheets_acess
+import src.credentials.gsheets_acess as gsheets_acess
 
 def load_to_google_sheets(df, spreadsheet_id, range_name):
     """
@@ -36,7 +35,7 @@ def load_to_gsheets(df):
         df (pd.DataFrame): DataFrame com os dados a serem carregados.
     """
     # ID da planilha do Google Sheets
-    SPREADSHEET_ID = credentials.gsheets_acess.SPREADSHEET_ID 
+    SPREADSHEET_ID = gsheets_acess.SPREADSHEET_ID
 
     # Nome da aba e intervalo para carregar os dados
     RANGE_NAME = 'Sheet1!A1'  # O intervalo onde os dados começarão a ser inseridos

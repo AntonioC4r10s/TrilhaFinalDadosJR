@@ -1,1 +1,3 @@
-SPREADSHEET_ID = '1PsGzXlkodOKpFEFm0O7kREv3wGP4pEU8q63LMCgjMI8'
+# Id da planilha do Google Sheets
+
+SPREADSHEET_ID = 'INSIRA SUA ID'

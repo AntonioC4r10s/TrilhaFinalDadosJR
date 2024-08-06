@@ -1,8 +1,7 @@
 import psycopg2
 from psycopg2 import sql
 import pandas as pd
-import credentials
-import credentials.pgdb_acess
+import src.credentials.pgdb_acess as postgresql_acess
 
 def create_database(conn, db_name):
     """
@@ -102,7 +101,7 @@ def load_to_postgresql(df: pd.DataFrame):
     Parâmetros:
     df -- DataFrame contendo os dados a serem carregados.
     """
-    PSQL = credentials.pgdb_acess.PSQL
+    PSQL = postgresql_acess.PSQL
     db_name = 'Records'
     
     try:
@@ -117,7 +116,7 @@ def load_to_postgresql(df: pd.DataFrame):
         conn.close()
         
         # Conectar ao novo banco de dados
-        conn = psycopg2.connect(f'{credentials.pgdb_acess.PSQL_server}{db_name}')
+        conn = psycopg2.connect(f'{postgresql_acess.PSQL_server}{db_name}')
         print(f'Conexão com o banco de dados "{db_name}" estabelecida.')
         
         # Criar o schema e a tabela se necessário
