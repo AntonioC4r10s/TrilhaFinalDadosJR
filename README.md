@@ -132,7 +132,7 @@ Esta imagem ilustra a arquitetura do pipeline de dados, destacando cada uma das 
 
 #### Imagem da Arquitetura do pipeline
 
-![Imagem da DAG no Airflow](img/img1.png)
+![Imagem da DAG no Airflow](img/img2.png)
 
 ### Orquestração
 Todo o processo de ETL é gerenciado pelo Apache Airflow, que coordena as tarefas de extração, transformação e carga de maneira eficiente e escalável. O uso do Airflow permite monitorar e agendar as tarefas, garantindo que o pipeline de dados funcione de maneira automatizada e sem interrupções.

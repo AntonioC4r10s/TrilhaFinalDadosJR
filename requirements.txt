@@ -3,3 +3,4 @@ oauth2client
 pandas
 requests
 psycopg2-binary
+apache-airflow
