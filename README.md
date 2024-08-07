@@ -51,7 +51,7 @@ Este projeto realiza a extração, transformação e carga (ETL) dos dados de sa
 
 ```bash
 git clone https://github.com/AntonioC4r10s/TrilhaFinalDadosJR.git
-cd seu-projeto
+cd TrilhaFinalDadosJR
 ```
 2. Instale as dependências (caso queira realizar alterações e melhorias):
 ```bash
