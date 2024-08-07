@@ -79,12 +79,15 @@ docker-compose up -d
 │   ├── load_to_gsheets.py
 │   ├── load_to_postgresql.py
 │   ├── data
+│   │   └── data.db
 │   └── credentials
 │       ├── gsheets_acess.py
 │       └── pgdb_acess.py
 ├── logs
 ├── plugins
 ├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
 └── README.md
 ```
 ## Executando o Projeto
@@ -110,7 +113,32 @@ def load_task_postgresql(**context):
     df = context['task_instance'].xcom_pull(task_ids='transform', key='transformed_data')
     load_to_postgresql(df)
 ```
-Imagem da DAG no Airflow
+
+## Arquitetura do ETL
+
+- Extração
+  - Na etapa de extração, os arquivos CSV são baixados diretamente do repositório GitHub do administrador. Esses arquivos são salvos em um banco de dados SQLite, que serve como nosso Data Lake. A escolha pelo SQLite foi motivada pela sua simplicidade, facilidade de uso e custo zero, sendo ideal para um projeto com infraestrutura limitada.
+
+- Transformação
+  - Na fase de transformação, várias operações são realizadas nos dados para garantir consistência e padronização. Em particular, as strings são corrigidas para um formato onde todas as palavras começam com letra maiúscula, exceto por conectivos como "de", "da", "dos", "das", etc. Por exemplo, a string "academia de ginástica" seria transformada em "Academia de Ginástica".
+
+- Carga
+  - Após a transformação, os dados são carregados em dois destinos diferentes:
+
+  - Google Sheets: Foi utilizado o Google Sheets como um Data Warehouse devido à sua acessibilidade e facilidade de uso para visualização e análise de dados.
+  - PostgreSQL: Os dados também são carregados em uma instância do PostgreSQL, criada no Tembo, para permitir consultas mais complexas e integração com outras ferramentas de análise de dados.
+
+Esta imagem ilustra a arquitetura do pipeline de dados, destacando cada uma das etapas mencionadas e a interação entre os diferentes componentes do sistema.
+
+#### Imagem da Arquitetura do pipeline
+
+![Imagem da DAG no Airflow](img/img1.png)
+
+### Orquestração
+Todo o processo de ETL é gerenciado pelo Apache Airflow, que coordena as tarefas de extração, transformação e carga de maneira eficiente e escalável. O uso do Airflow permite monitorar e agendar as tarefas, garantindo que o pipeline de dados funcione de maneira automatizada e sem interrupções.
+
+#### Imagem da DAG no Airflow
+
 ![Imagem da DAG no Airflow](img/img1.png)
 
 
@@ -179,9 +207,7 @@ Eu projetaria um pipeline de ETL da seguinte maneira:
 --- 
 
 ## Contribuições e Contatos
-Agradecemos seu interesse em nosso projeto! Se você deseja contribuir ou tem alguma dúvida, sinta-se à vontade para entrar em contato. Sua contribuição é muito bem-vinda!
-
 - **LinkedIn**: [Antonio Junior](https://www.linkedin.com/in/antoniojuniortec/)
 - **GitHub**: [AntonioC4r10s](https://github.com/AntonioC4r10s)
 
-Sinta-se à vontade para abrir issues ou pull requests no repositório. Estou ansiosos para colaborar com você!
+Sinta-se à vontade para abrir issues ou pull requests no repositório. Estou ansioso para colaborar com você!
